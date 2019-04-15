@@ -1,13 +1,9 @@
-# Multi-filter Page
-This project is a web page that displays multiple filters and returns paginated filtered results.
-
-![](multi-filter.gif)
+# Weather Widget
+This project shows a weather widget and its editor.
 
 ### 1. Technology stack:
 
 - react
-- redux
-- redux-observable
 
 
 ### 2. Requirements:
@@ -20,6 +16,5 @@ This project is a web page that displays multiple filters and returns paginated 
 
 1. Clone repo in your machine
 2. run 'yarn install'
-3. run 'yarn json-server'
-4. run 'yarn start'
+3. run 'yarn start'
 
