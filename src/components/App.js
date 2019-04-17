@@ -1,35 +1,19 @@
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React from 'react';
 
-import Card from './card/Card';
+import Widget from './widget/Widget';
+import WidgetEditor from './widgetEditor/WidgetEditor';
 
 import styles from './App.scss';
 
-class App extends Component {
-  static propTypes = {
-    
-  };
-
-  static defaultProps = {
-    
-  };
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      
-    }
-  }
-
-  render() {
-
-    return (
-      <div>
-        Hi
-      </div>
-    );
-  }
-};
+const App = props => {
+  
+  return (
+    <div>
+      <WidgetEditor />
+      <div className={styles.header}>hihiihh</div>
+      <Widget />
+    </div>
+  );
+}
 
 export default App;
