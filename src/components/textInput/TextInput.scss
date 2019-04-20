@@ -1,0 +1,17 @@
+.component {
+  display: flex;
+  flex-direction: column;
+}
+
+.label{
+  text-transform: capitalize;
+}
+
+.input {
+  border-radius: 3px;
+  border: 1px solid $grey-silver;
+
+  &::placeholder {
+    color: $grey-empress;
+  }
+}

@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import styles from './RadioButtonInput.scss';
 
 const RadioButtonInput = props => {
-  const { checked, className, label, name, value } = props;
+  const { checked, className, label, name, onClick, value } = props;
 
   const componentClassName = classNames(styles.component, className);
   
@@ -14,19 +14,20 @@ const RadioButtonInput = props => {
   });
 
   return (
-    <div className={componentClassName}>
-      <span className={iconClassName}></span>
+    <li className={componentClassName}>
+      <span className={iconClassName} />
 
       <input
         className={styles.input}
         id={value} 
         name={name}
+        onClick={onClick}
         value={value} 
         type="radio" 
       />
 
       <label className={styles.label} htmlFor={value}>{label}</label>
-    </div>
+    </li>
   )
 }
 
@@ -35,6 +36,7 @@ RadioButtonInput.propTypes = {
   className: PropTypes.string,
   label: PropTypes.string,
   name: PropTypes.string,
+  onClick: PropTypes.func,
   value: PropTypes.string
 };
 
@@ -42,6 +44,7 @@ RadioButtonInput.defaultProps = {
   className: undefined,
   label: undefined,
   name: undefined,
+  onClick: undefined,
   value: undefined
 };
 

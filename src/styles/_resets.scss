@@ -1,23 +1,38 @@
 // RESETS
-* {
-  box-sizing: border-box;
-}
+html {
+  * {
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', Arial;
+  }
 
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-ol,
-p,
-ul {
-  margin: 0;
-}
+  body,
+  fieldset
+  input,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  ol,
+  p,
+  ul {
+    margin: 0;
+  }
 
-ol,
-ul {
-  list-style-type: none;
-  padding: 0;
+  fieldset,
+  legend,
+  ol,
+  ul {
+    padding: 0;
+  }
+
+  fieldset {
+    border: none;
+  }
+
+  ol,
+  ul {
+    list-style-type: none;
+  }
 }
