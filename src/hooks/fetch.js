@@ -14,12 +14,11 @@ export const useFetch = (url, dependencies) => {
           return response.json();
         })
         .then(data => {
-          setFetchedData(data);          
+          setFetchedData(data); 
+          setIsLoading(false);         
         })
         .catch(e => {
           console.log('Error: ', e);
-        })     
-        .finally(() => {
           setIsLoading(false);
         })
     }
