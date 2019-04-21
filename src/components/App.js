@@ -24,7 +24,7 @@ const App = () => {
   }
 
   const handleTitleChange = e => {
-    setTitle(e.target.value || DEFAULT_WIDGET_TITLE)
+    setTitle(e.target.value.trim() || DEFAULT_WIDGET_TITLE)
   }
 
   const handleWindClick = e => {
@@ -33,9 +33,12 @@ const App = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.line} />
+      <div 
+        className={styles.line} 
+        role='presentation'
+      />
 
-      <div className={styles.app}>
+      <main className={styles.app}>
         <WidgetEditor 
           className={styles.editor}
           onTemperatureClick={handleTemperatureClick}
@@ -45,17 +48,19 @@ const App = () => {
           windOption={windOption}
         />
 
-        <div className={styles.divider} />
+        <div 
+          className={styles.divider} 
+          role='separator'
+        />
         
         <Widget
           className={styles.widget}
           data={fetchedData}
-          isLoading={isLoading}
           title={title}
           units={units}
           windOption={windOption}
         />
-      </div>
+      </main>
     </div>
   );
 }

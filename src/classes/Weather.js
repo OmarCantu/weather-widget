@@ -51,15 +51,17 @@ class Weather {
 
   iconSrc() {
     const { icon } = this._wthr[0];
-    const iconSrc = `http://openweathermap.org/img/w/${icon}.png` 
-      || '../static/images/placeholder.png';
-
-    return iconSrc;
+    return `http://openweathermap.org/img/w/${icon}.png`;
   }
 
   formattedTemp() {
     const t = Math.round(this._temp)    
     return `${t}°`;
+  }
+
+  description() {
+    const { description } = this._wthr[0];
+    return description;
   }
 }
 

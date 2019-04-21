@@ -15,7 +15,12 @@ const RadioButtonInput = props => {
 
   return (
     <li className={componentClassName}>
-      <span className={iconClassName} />
+      <span 
+        aria-checked={checked} 
+        className={iconClassName} 
+        role='radio' 
+        tabIndex={0}
+      />
 
       <input
         className={styles.input}
@@ -24,6 +29,7 @@ const RadioButtonInput = props => {
         onClick={onClick}
         value={value} 
         type="radio" 
+        tabIndex={-1}
       />
 
       <label className={styles.label} htmlFor={value}>{label}</label>

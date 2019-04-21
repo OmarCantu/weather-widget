@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
-import Spinner from 'react-spinkit';
 import classNames from 'classnames';
 
 import Weather from '../../classes/Weather';
@@ -9,17 +8,13 @@ import { OFF } from '../../constants/main';
 import styles from './Widget.scss';
 
 const Widget = props => {
-  const { className, data, isLoading, title, units, windOption } = props;
+  const { className, data, title, units, windOption } = props;
 
   useEffect(() => {
     setWeather(new Weather(data, units));
   }, [data]);
 
   const [weather, setWeather] = useState(new Weather(data, units), []);
-
-  if (isLoading) {
-    return null
-  }
 
   const componentClassName = classNames(styles.widget, className);
   const windClassName = classNames(styles.wind, {
@@ -28,22 +23,13 @@ const Widget = props => {
 
   return (
     <section className={componentClassName}>
-      {isLoading && (
-        <div className={styles.overlay}>
-          <Spinner
-            className={styles.loader}
-            fadeIn='none'
-            name='line-spin-fade-loader'
-          />
-        </div>
-      )}
-
       <h2 className={styles.title}>{title}</h2>
 
       <div className={styles.content}>
         <img 
-          alt='Weather icon' 
+          alt={weather.description()} 
           className={styles.icon} 
+          role='presentation'
           src={weather.iconSrc()} 
         />
 
@@ -54,16 +40,26 @@ const Widget = props => {
             {weather.formattedTemp()}
           </strong>
 
-          <div className={windClassName}>
-            <strong className={styles['wind-word']}>Wind</strong>
+          <div 
+            aria-hidden={windOption === OFF}
+            className={windClassName}
+          >
+            <label 
+              className={styles['wind-word']}
+              htmlFor='wind-details'
+            >
+              Wind
+            </label>
 
-            <span className={styles['wind-direction']}>
-              {weather.wind.formattedDirection()}
-            </span>
+            <div id='wind-details'>
+              <span className={styles['wind-direction']}>
+                {weather.wind.formattedDirection()}
+              </span>
 
-            <span className={styles['wind-speed']}>
-              {weather.wind.formattedSpeed()}
-            </span>
+              <span className={styles['wind-speed']}>
+                {weather.wind.formattedSpeed()}
+              </span>
+            </div>
           </div>
         </div>
       </div>       
@@ -74,7 +70,6 @@ const Widget = props => {
 Widget.propTypes = {
   className: PropTypes.string, 
   data: PropTypes.object,
-  isLoading: PropTypes.bool,
   title: PropTypes.string,
   units: PropTypes.string,
   windOption: PropTypes.string
@@ -83,7 +78,6 @@ Widget.propTypes = {
 Widget.defaultProps = {
   className: undefined,
   data: undefined,
-  isLoading: true,
   title: undefined,
   units: undefined,
   windOption: undefined
