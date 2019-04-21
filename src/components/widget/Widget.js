@@ -1,35 +1,24 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
-import { getWindDirection, getWindSpeed } from '../../util/index';
-import { useFetch } from '../../hooks/fetch';
-import { useGeolocationUrl } from '../../hooks/geolocationUrl';
+import Weather from '../../classes/Weather';
+import { ON } from '../../constants/main';
 
 import styles from './Widget.scss';
 
 const Widget = props => {
-  const { className, title, units } = props;
-  const [url] = useGeolocationUrl(units, [units]);
-  const [isLoading, fetchedData] = useFetch(url, [url]);
+  const { className, data, title, units, windOption } = props;
 
-  if (isLoading) {
-    return null;
-  }
+  useEffect(() => {
+    setWeather(new Weather(data, units));
+  }, [data]);
 
-  console.log('url: ', url);
-  console.log('fetchedData: ', fetchedData);
+  const [weather, setWeather] = useState(new Weather(data, units), []);
 
-  const { 
-    weather,
-    name: city, 
-    main: { temp }, 
-    wind: { speed: windSpeed, deg: windDirection }
-  } = fetchedData;
-
-  const { icon } = weather[0];
-  const src = `http://openweathermap.org/img/w/${icon}.png` 
-    || '../static/images/placeholder.png';
+  // if (isLoading) {
+  //   return null;
+  // }
 
   const componentClassName = classNames(styles.widget, className);
 
@@ -38,18 +27,26 @@ const Widget = props => {
       <h2>{title}</h2>
 
       <div>
-        <img alt='Weather icon' className={styles.icon} src={src} />
+        <img 
+          alt='Weather icon' 
+          className={styles.icon} 
+          src={weather.iconSrc()} 
+        />
 
-        <div>
-          <h3 className={styles.city}>{city}</h3>
+        <div className={styles.details}>
+          <h3 className={styles.city}>{weather.city}</h3>
 
-          <strong className={styles.temperature}>{temp}°</strong>
+          <strong className={styles.temperature}>
+            {weather.formattedTemp()}
+          </strong>
 
-          <div className={styles.wind}>
-            <strong className={styles['wind-word']}>Wind</strong>
-            <span>{getWindDirection(windDirection)}</span>
-            <span>{getWindSpeed(windSpeed, units)}</span>
-          </div>
+          {windOption === ON && (
+            <div className={styles.wind}>
+              <strong className={styles['wind-word']}>Wind</strong>
+              <span>{weather.wind.formattedDirection()}</span>
+              <span>{weather.wind.formattedSpeed()}</span>
+            </div>
+          )}
         </div>
       </div>       
     </section>
@@ -58,11 +55,18 @@ const Widget = props => {
 
 Widget.propTypes = {
   className: PropTypes.string, 
-  title: PropTypes.string.isRequired
+  data: PropTypes.object,
+  title: PropTypes.string,
+  units: PropTypes.string,
+  windOption: PropTypes.string
 };
 
 Widget.defaultProps = {
-  className: undefined
+  className: undefined,
+  data: undefined,
+  title: undefined,
+  units: undefined,
+  windOption: undefined
 };
 
 export default Widget;
