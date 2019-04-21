@@ -11,7 +11,8 @@
 
 .icon {
   border-radius: 50%;
-  border: 1px solid $grey-silver; 
+  border: $grey-line;
+  transition: border .3s;
 
   &:not(:hover) {
     background-color: $white;

@@ -32,21 +32,30 @@ const App = () => {
   }
 
   return (
-    <div>
-      <WidgetEditor 
-        onTemperatureClick={handleTemperatureClick}
-        onTitleChange={handleTitleChange}
-        onWindClick={handleWindClick}
-        units={units}
-        windOption={windOption}
-      />
-      
-      <Widget
-        data={fetchedData}
-        title={title}
-        units={units}
-        windOption={windOption}
-      />
+    <div className={styles.container}>
+      <div className={styles.line} />
+
+      <div className={styles.app}>
+        <WidgetEditor 
+          className={styles.editor}
+          onTemperatureClick={handleTemperatureClick}
+          onTitleChange={handleTitleChange}
+          onWindClick={handleWindClick}
+          units={units}
+          windOption={windOption}
+        />
+
+        <div className={styles.divider} />
+        
+        <Widget
+          className={styles.widget}
+          data={fetchedData}
+          isLoading={isLoading}
+          title={title}
+          units={units}
+          windOption={windOption}
+        />
+      </div>
     </div>
   );
 }

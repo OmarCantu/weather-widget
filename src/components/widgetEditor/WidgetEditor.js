@@ -27,11 +27,17 @@ const WidgetEditor = props => {
     windOption
   } = props;
 
+  const submitHandler = e => {
+    e.preventDefault();
+  }
+
   const componentClassName = classNames(styles.editor, className);
+  const unitsClassName = classNames(styles.list, styles.units)
 
   return (
-    <form className={componentClassName}>
+    <form className={componentClassName} onSubmit={submitHandler}>
       <TextInput 
+        className={styles.input}
         label={TITLE}
         name={TITLE}
         onChange={onTitleChange}
@@ -41,7 +47,7 @@ const WidgetEditor = props => {
       <fieldset>
         <legend className={styles.legend}>{TEMPERATURE}</legend>
         
-        <ul className={styles.list}>
+        <ul className={unitsClassName}>
           <RadioButtonInput 
             checked={units === METRIC}
             label="°C"

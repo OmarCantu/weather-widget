@@ -1,9 +1,43 @@
 .widget {
-  
+  background-color: $white;
+  border-radius: 3px;
+  box-shadow: 1px 1px 10px -2px $grey-empress;
+  overflow: hidden;
+  padding: 30px;
+}
+
+.loader,
+.overlay {
+  position: absolute;
+}
+
+.loader {
+  color: $black;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.overlay {
+  background-color: $white;
+  height: 100%;
+  opacity: .5;
+  width: 100%;
+}
+
+.title {
+  line-height: 1;
+  text-transform: uppercase;
+  margin-bottom: 44px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 55% 45%;
 }
 
 .icon {
-
+  place-self: center;
 }
 
 .details {
@@ -11,17 +45,37 @@
 }
 
 .city {
-
+  font-weight: normal;
 }
 
 .temperature {
-
+  font-size: 33px;
+  letter-spacing: -3px;
 }
 
 .wind {
+  opacity: 1;
+  transition: opacity .3s;
+}
 
+.hidden {
+  opacity: 0;
+}
+
+.wind-word,
+.wind-direction,
+.wind-speed {
+  font-size: 11px;
 }
 
 .wind-word {
+  margin-right: 8px;
+}
 
+.wind-direction {
+  margin-right: 5px;
+}
+
+.wind-speed {
+  letter-spacing: -1px;
 }

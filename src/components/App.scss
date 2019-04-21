@@ -1,5 +1,52 @@
-.header {
-  background-color: $white; 
+.container {
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 20px;
+}
+
+.line {
+  border-top: 4px solid $blue-denim;
+  margin-bottom: 8px;
+}
+
+.app {
+  background-color: $white-smoke;
+  border-radius: 0 0 10px 10px;
+  border: $grey-line;
+  display: flex;
+}
+
+@include phone {
+  .app {
+    padding: 30px;
+  }
+}
+@include tablet {
+  .app {
+    padding: 60px;
+  }
+
+  .editor,
+  .widget {
+    flex-basis: calc(50% - 30px);
+  }
+
+  .divider {
+    flex-basis: 60px;
+    position: relative;
+
+    &:after {
+      background-color: $grey-silver;
+      content: '';
+      display: block;
+      height: calc(100% - 30px);
+      left: 50%;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 1px;
+    }
+  }
 }
 
 

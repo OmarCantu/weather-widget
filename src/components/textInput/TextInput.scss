@@ -4,12 +4,15 @@
 }
 
 .label{
+  line-height: 1;
+  margin-bottom: 10px;
   text-transform: capitalize;
 }
 
 .input {
   border-radius: 3px;
-  border: 1px solid $grey-silver;
+  border: $grey-line;
+  padding: 8px 15px;
 
   &::placeholder {
     color: $grey-empress;
