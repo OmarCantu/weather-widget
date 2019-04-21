@@ -12,6 +12,7 @@
 .icon {
   border-radius: 50%;
   border: $grey-line;
+  margin-right: 15px;
   transition: border .3s;
 
   &:not(:hover) {

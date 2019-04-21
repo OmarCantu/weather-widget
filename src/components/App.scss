@@ -16,9 +16,32 @@
   display: flex;
 }
 
+.divider {
+  flex-basis: 60px;
+  position: relative;
+
+  &:after {
+    background-color: $grey-silver;
+    content: '';
+    display: block;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
 @include phone {
   .app {
+    flex-direction: column;
     padding: 30px;
+  }
+
+  .divider {
+    &:after {
+      height: 1px;
+      width: calc(100% - 30px);
+    }
   }
 }
 @include tablet {
@@ -32,18 +55,8 @@
   }
 
   .divider {
-    flex-basis: 60px;
-    position: relative;
-
     &:after {
-      background-color: $grey-silver;
-      content: '';
-      display: block;
       height: calc(100% - 30px);
-      left: 50%;
-      position: absolute;
-      top: 50%;
-      transform: translate(-50%, -50%);
       width: 1px;
     }
   }

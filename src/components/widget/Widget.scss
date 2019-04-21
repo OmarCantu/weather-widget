@@ -33,7 +33,6 @@
 
 .content {
   display: grid;
-  grid-template-columns: 55% 45%;
 }
 
 .icon {
@@ -78,4 +77,16 @@
 
 .wind-speed {
   letter-spacing: -1px;
+}
+
+@include phone {
+  .content {
+    grid-template-columns: 40% 60%;
+  }
+}
+
+@include tablet {
+  .content {
+    grid-template-columns: 55% 45%;
+  }
 }
