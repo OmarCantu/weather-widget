@@ -1,20 +1,20 @@
 # Weather Widget
-This project shows a weather widget and its editor.
+This project shows a weather widget and its editor. It fetches data from Open Weather Map API.
+
+![](weather-widget.gif)
 
 ### 1. Technology stack:
 
-- react
+- react (hooks)
 
 
 ### 2. Requirements:
 
 - Node.js v10.15.1
-- Yarn v1.10.1
 
 
 ### 3. Instructions:
 
-1. Clone repo in your machine
-2. run 'yarn install'
-3. run 'yarn start'
+1. Clone repository in your machine
+3. run 'npm start'
 
