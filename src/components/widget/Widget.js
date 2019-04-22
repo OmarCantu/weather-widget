@@ -31,6 +31,7 @@ const Widget = props => {
           className={styles.icon} 
           role='presentation'
           src={weather.iconSrc()} 
+          title={weather.description()} 
         />
 
         <div className={styles.details}>

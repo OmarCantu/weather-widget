@@ -5,7 +5,6 @@ import classNames from 'classnames';
 import styles from './TextInput.scss';
 
 class TextInput extends Component {
-  
   static propTypes = {
     className: PropTypes.string,
     label: PropTypes.string,
@@ -24,9 +23,13 @@ class TextInput extends Component {
 
   constructor(props) {
     super(props);
-    this.textInput = React.createRef();
+    this.textInput = React.createRef(); // Necessary to blur after Enter
   }
 
+  /**
+  * This methods gets called from the parent via ref. Added to
+  * make text input blur after Enter.
+  */ 
   blurTextInput = () => {
     this.textInput.current.blur();
   }

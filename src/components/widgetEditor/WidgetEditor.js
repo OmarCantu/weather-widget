@@ -38,9 +38,13 @@ class WidgetEditor extends Component {
 
   constructor(props) {
     super(props);
-    this.textInput = React.createRef();
+    this.textInput = React.createRef(); // Necessary to blur after Enter
   }
 
+  /**
+  * Prevent re-loading of page after Enter on text input, 
+  * then trigger blur.
+  */ 
   submitHandler = e => {
     e.preventDefault();
     this.textInput.current.blurTextInput();

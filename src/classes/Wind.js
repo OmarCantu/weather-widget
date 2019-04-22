@@ -33,6 +33,7 @@ class Wind {
     this._units = units;
   }
 
+  /* Converts wind direction in degrees to cardinal direction abbreviation */
   formattedDirection() {
     const deg = this._degree;
 
@@ -61,6 +62,7 @@ class Wind {
     }
   }
 
+  /* Formats wind speed and adds speed unit at the end */
   formattedSpeed() {
     if (!isNumber(this._speed) 
       || (this._units !== IMPERIAL && this._units !== METRIC)) {
@@ -68,6 +70,7 @@ class Wind {
     }
 
     if (this._units === METRIC) {
+      /* Converts m/s to km/h */
       const s = Math.round(this._speed * 60 * 60 / 1000);
       return `${s} km/h`;
     } else {

@@ -24,7 +24,8 @@ const App = () => {
   }
 
   const handleTitleChange = e => {
-    setTitle(e.target.value.trim() || DEFAULT_WIDGET_TITLE)
+    /* If the text input is empty or blank a default is set instead */
+    setTitle(e.target.value.trim() || DEFAULT_WIDGET_TITLE);
   }
 
   const handleWindClick = e => {
